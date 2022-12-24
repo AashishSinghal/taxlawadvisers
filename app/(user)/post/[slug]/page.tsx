@@ -12,7 +12,7 @@ type Props = {
   };
 };
 
-export const revalidate = 3600; // Revalidate the SSR pages every 1 hour.
+export const revalidate = 36; // Revalidate the SSR pages every 1 hour.
 
 export async function generateStaticParams() {
   const query = groq`

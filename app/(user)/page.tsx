@@ -22,7 +22,9 @@ const fallback = () => (
   </div>
 );
 
-async function HomePage() {
+export const revalidate = 36; // Revalidate the SSR pages every 1 hour.
+
+export default async function HomePage() {
   if (previewData()) {
     return (
       <PreviewSuspense fallback={fallback()}>
@@ -36,4 +38,4 @@ async function HomePage() {
   return <BlogList posts={posts} />;
 }
 
-export default HomePage;
+
