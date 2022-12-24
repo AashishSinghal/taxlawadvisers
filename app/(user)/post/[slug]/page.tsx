@@ -3,6 +3,9 @@ import Image from "next/image";
 import React from "react";
 import { client } from "../../../../lib/sanity.client";
 import { formatedDate, urlFor } from "../../../../lib";
+import { PortableText } from "@portabletext/react";
+import { RichTextComponents } from "../../../../components/RichTextComponents";
+
 type Props = {
   params: {
     slug: string;
@@ -20,8 +23,17 @@ const Post = async ({ params: { slug } }: Props) => {
     `;
 
   const post: Post = await client.fetch(query, { slug });
-  const { _id, _createdAt, mainImage, author, title } = post;
-  
+  const {
+    _id,
+    _createdAt,
+    mainImage,
+    author,
+    title,
+    body,
+    description,
+    categories,
+  } = post;
+
   return (
     <article className="px-10 pb-28">
       <section className="sapce-y-2 border border-[#62d7a2] text-white">
@@ -31,8 +43,6 @@ const Post = async ({ params: { slug } }: Props) => {
               className="object-cover object mx-auto"
               src={urlFor(mainImage).url()}
               alt={author.name}
-              height={40}
-              width={40}
               fill
             />
           </div>
@@ -51,16 +61,31 @@ const Post = async ({ params: { slug } }: Props) => {
                   width={40}
                 />
                 <div className="w-64">
-                  <h3>{author.name}</h3>
-                  <div>
-                    {/* TODO: Author Bio */}
-                  </div>
+                  <h3 className="text-lg font-bold">{author.name}</h3>
+                  <div>{/* TODO: Author Bio */}</div>
                 </div>
+              </div>
+            </div>
+            <div>
+              <h2 className="italic pt-10">{description}</h2>
+              <div className="flex items-center justify-end mt-auto space-x-2">
+                {categories.map((category) => {
+                  return (
+                    <p
+                      key={category._id}
+                      className="bg-gray-800 text-white px-3 py-1 rounded-full text-sm font-semibold mt-4"
+                    >
+                      {category.title}
+                    </p>
+                  );
+                })}
               </div>
             </div>
           </section>
         </div>
       </section>
+      {/*  */}
+      <PortableText value={body} components={RichTextComponents} />
     </article>
   );
 };
