@@ -3,9 +3,10 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schemas";
 import { myTheme } from "./theme";
+import Logo from "./components/Logo";
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "51v93on6";
-const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!;
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET!;
 
 console.log("ProjectId - ", projectId, dataset);
 export default defineConfig({
@@ -20,8 +21,8 @@ export default defineConfig({
   },
   studio: {
     components: {
-      logo: StudioLogo,
-    }
+      logo: Logo,
+    },
   },
-  theme: myTheme
+  theme: myTheme,
 });
