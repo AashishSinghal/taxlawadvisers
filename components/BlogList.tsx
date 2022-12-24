@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import urlFor from "../lib/urlfor";
+import { urlFor, formatedDate } from "../lib";
 import { TbArrowUpRight } from "react-icons/tb";
 import ClientSideRoute from "./ClientSideRoute";
 
@@ -9,8 +9,6 @@ type Props = {
 };
 
 const BlogList = ({ posts }: Props) => {
-  console.log(posts.length);
-
   return (
     <div className="">
       <hr className="border border-[#62d7a2] mb-10" />
@@ -39,13 +37,7 @@ const BlogList = ({ posts }: Props) => {
                   <div className="absolute bottom-0 w-full bg-opacity-20 bg-black backdrop-blur-lg rounded drop-shadow-lg text-white p-5 flex justify-between z-10">
                     <div>
                       <p className="font-bold">{title}</p>
-                      <p>
-                        {new Date(_createdAt).toLocaleDateString(undefined, {
-                          day: "numeric",
-                          month: "long",
-                          year: "numeric",
-                        })}
-                      </p>
+                      <p>{formatedDate(_createdAt)}</p>
                     </div>
                     <div className="flex flex-col md:flex-row gap-y-2 md:gap-x-2 items-center">
                       {categories.map((category) => {
