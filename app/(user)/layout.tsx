@@ -8,9 +8,8 @@ export default function RootLayout({
   return (
     <html>
       <head />
-      <body>
+      <body className="mx-auto">
         <Header />
-        
         {children}
       </body>
     </html>
