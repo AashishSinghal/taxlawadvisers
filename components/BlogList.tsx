@@ -40,7 +40,7 @@ const BlogList = ({ posts }: Props) => {
                     <div>
                       <p className="font-bold">{title}</p>
                       <p>
-                        {new Date(_createdAt).toLocaleDateString({
+                        {new Date(_createdAt).toLocaleDateString(undefined, {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
