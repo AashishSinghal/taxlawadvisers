@@ -1,40 +1,47 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { themeChange } from "theme-change";
 import {
   capitalizeFirstLetter,
   getTheme,
   setTheme as setLocalTheme,
-} from "../lib";
+} from "lib";
 
 const ThemeSwitch = () => {
-  const [theme, setTheme] = useState("light");
-  const themes = ["light", "dark"];
+  /*Initialize under useEffect */
 
   useEffect(() => {
-    setTheme((prev) => {
-      updateDocumentTheme(getTheme() || prev);
-      return getTheme() || prev;
-    });
+    themeChange(false);
   }, []);
+  // const [theme, setTheme] = useState("light");
+  const themes = ["light", "dark"];
 
-  const updateDocumentTheme = (theme: string) => {
-    const html = document.getElementsByTagName("html");
-    html[0]?.setAttribute("data-theme", theme);
-  };
+  // useEffect(() => {
+  //   setTheme((prev) => {
+  //     updateDocumentTheme(getTheme() || prev);
+  //     return getTheme() || prev;
+  //   });
+  // }, []);
 
-  const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    // e.preventDefault()
-    updateDocumentTheme(e.target.value);
-    setLocalTheme(e.target.value);
-    setTheme(e.target.value);
-  };
+  // const updateDocumentTheme = (theme: string) => {
+  //   const html = document.getElementsByTagName("html");
+  //   html[0]?.setAttribute("data-theme", theme);
+  // };
+
+  // const handleThemeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   // e.preventDefault()
+  //   updateDocumentTheme(e.target.value);
+  //   setLocalTheme(e.target.value);
+  //   setTheme(e.target.value);
+  // };
 
   return (
     <select
       className="select-bordered select w-min max-w-xs"
-      value={theme}
-      onChange={(e) => handleThemeChange(e)}
+      data-choose-theme
+      // value={theme}
+      // onChange={(e) => handleThemeChange(e)}
     >
       {themes.map((t) => {
         return (

@@ -31,7 +31,7 @@ const SideBar = () => {
         onClick={(e) => handleMennutoggle(e)}
       >
         <div
-          className="flex flex-col h-full w-4/5 bg-white border-l-2 border cursor-default border-[#62d7a2]"
+          className="flex flex-col h-full w-4/5 bg-primary border-l-2 border cursor-default border-[#62d7a2]"
           onClick={(e) => handleClick(e)}
         >
           <div

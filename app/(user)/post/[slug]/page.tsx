@@ -1,10 +1,10 @@
 import { groq } from "next-sanity";
 import Image from "next/image";
 import React from "react";
-import { client } from "../../../../lib/sanity.client";
-import { formatedDate, urlFor } from "../../../../lib";
+import { client } from "lib/sanity.client";
+import { formatedDate, urlFor } from "lib";
 import { PortableText } from "@portabletext/react";
-import { RichTextComponents } from "../../../../components/RichTextComponents";
+import { RichTextComponents } from "components/RichTextComponents";
 
 type Props = {
   params: {
