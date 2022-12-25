@@ -69,23 +69,23 @@ const BlogList = ({ posts }: Props) => {
   );
 };
 
-function ErrorFallback({ error, resetErrorBoundary }: any) {
-  return (
-    <div role="alert">
-      <p>Something went wrong:</p>
-      <pre>{error.message}</pre>
-      <button onClick={resetErrorBoundary}>Try again</button>
-    </div>
-  );
-}
+// function ErrorFallback({ error, resetErrorBoundary }: any) {
+//   return (
+//     <div role="alert">
+//       <p>Something went wrong:</p>
+//       <pre>{error.message}</pre>
+//       <button onClick={resetErrorBoundary}>Try again</button>
+//     </div>
+//   );
+// }
 
-const ComponentWithErrorBoundary = withErrorBoundary(BlogList, {
-  FallbackComponent: ErrorFallback,
-  onError(error, info) {
-    // Do something with the error
-    // E.g. log to an error logging client here
-    console.log("Error & Info - ", error, info);
-  },
-});
+// const ComponentWithErrorBoundary = withErrorBoundary(BlogList, {
+//   FallbackComponent: ErrorFallback,
+//   onError(error, info) {
+//     // Do something with the error
+//     // E.g. log to an error logging client here
+//     console.log("Error & Info - ", error, info);
+//   },
+// });
 
-export default ComponentWithErrorBoundary;
+export default BlogList;
