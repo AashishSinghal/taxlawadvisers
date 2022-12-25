@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { urlFor, formatedDate } from "../lib";
+import { urlFor, formatedDate } from "lib";
 import { TbArrowUpRight } from "react-icons/tb";
 import ClientSideRoute from "./ClientSideRoute";
 

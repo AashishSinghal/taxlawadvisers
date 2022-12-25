@@ -5,6 +5,7 @@ import { client } from "../../lib/sanity.client";
 import PreviewSuspense from "../../components/PreviewSuspense";
 import PreviewBlogList from "../../components/PreviewBlogList";
 import BlogList from "../../components/BlogList";
+import RootLayout from "./layout";
 
 const query = groq`
   *[_type=='post']{
@@ -27,15 +28,19 @@ export const revalidate = 36; // Revalidate the SSR pages every 1 hour.
 export default async function HomePage() {
   if (previewData()) {
     return (
-      <PreviewSuspense fallback={fallback()}>
-        <PreviewBlogList query={query} />
-      </PreviewSuspense>
+      <RootLayout>
+        <PreviewSuspense fallback={fallback()}>
+          <PreviewBlogList query={query} />
+        </PreviewSuspense>
+      </RootLayout>
     );
   }
 
   const posts = await client.fetch(query);
-  
-  return <BlogList posts={posts} />;
+
+  return (
+    <RootLayout>
+      <BlogList posts={posts} />
+    </RootLayout>
+  );
 }
-
-

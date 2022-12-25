@@ -1,5 +1,6 @@
 import { client } from "./sanity.client";
 import imageUrlbuilder from "@sanity/image-url";
+import fetchCategories from "./fetchCategories";
 
 const builder = imageUrlbuilder(client);
 
@@ -26,3 +27,5 @@ export function getTheme() {
 export function setTheme(theme: string) {
   localStorage.setItem("theme", theme);
 }
+
+export { fetchCategories };

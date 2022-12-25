@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdClose } from "react-icons/io";
+import Categories from "./Categories";
 
 const SideBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,10 +31,16 @@ const SideBar = () => {
         onClick={(e) => handleMennutoggle(e)}
       >
         <div
-          className="flex h-full w-4/5 bg-white border-l-2 border border-[#62d7a2] text-black text-5xl"
+          className="flex flex-col h-full w-4/5 bg-white border-l-2 border cursor-default border-[#62d7a2]"
           onClick={(e) => handleClick(e)}
         >
-          SideBar
+          <div
+            className="felx md:hidden xl:hidden px-5 h-min py-3 ml-auto my-6 mr-5 text-sm md:text-base bg-transparent cursor-pointer border border-[#62d7a2] text-[#62d7a2] flex items-center rounded-full text-center"
+            onClick={handleMennutoggle}
+          >
+            <IoMdClose />
+          </div>
+          <Categories />
         </div>
       </div>
     </>
